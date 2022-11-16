@@ -1,6 +1,5 @@
-from flask import Flask, render_template
-
-app = Flask(__name__)
+from application import app
+from flask import render_template
 
 
 @app.route('/')
@@ -17,9 +16,3 @@ def news_page(news_type):
 @app.route('/login-registration')
 def login_registration():
     return render_template('login_registration.html')
-
-
-
-
-if __name__ == "__main__":
-    app.run(debug=True, port=8080)
