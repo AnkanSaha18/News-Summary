@@ -11,9 +11,14 @@
     <title>Register & Login</title>
 </head>
 <body>
+
+
+
 <div class="container">
     <div class="forms-container">
         <div class="signin-signup">
+
+
             <form action="#" class="sign-in-form">
                 <h2 class="title">Login</h2>
                 <div class="input-field">
@@ -27,7 +32,7 @@
                 <input class="btn solid" type="submit" value="Login"/>
                 <br>
                 <br>
-                <a class="text" href="{{ url_for('home_page') }}" style="color: black; text-decoration: none;" onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='black'">Continue without Login</p>
+                <a class="text" href="{{ url_for('home_page') }}" style="color: black; text-decoration: none;" onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='black'">Continue without Login</a>
                 <div class="social-media">
                     <a href="#" class="social-icon">
                         <i class="fab fa-facebook-f"></i>
@@ -43,28 +48,39 @@
                     </a>
                 </div>
             </form>
-            <form action="#" class="sign-up-form">
+
+
+            <form name="registration" action="#" class="sign-up-form" method="POST">
+                {{ form.hidden_tag() }}
                 <h2 class="title">Registration</h2>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input placeholder="Username" type="text"/>
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input placeholder="Email" type="email"/>
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input placeholder="Password" type="password"/>
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input placeholder="Confirm Password" type="password"/>
-                </div>
-                <input class="btn" type="submit" style="background-color: #ac85ff;" value="Confirm"/>
-                <br>
-                <br>
-                <a class="social-text" href="{{ url_for('home_page') }}" style="color: black; text-decoration: none;" onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='black'">Continue without any Account</p>
+
+                {{ form.username(class="input-field", placeholder="          Username", type="text", style="border:0px;") }}
+                {{ form.email(class="input-field", placeholder="          Email", type="email", style="border:0px;") }}
+                {{ form.password1(class="input-field", placeholder="          Password", type="password", style="border:0px;") }}
+                {{ form.password2(class="input-field", placeholder="          Confirm Password", type="password", style="border:0px;") }}
+
+                {{ form.submit(class="btn")}}
+
+<!--                <div class="input-field">-->
+<!--                    <i class="fas fa-user"></i>-->
+<!--                    <input placeholder="Username" type="text"/>-->
+<!--                </div>-->
+<!--                <div class="input-field">-->
+<!--                    <i class="fas fa-envelope"></i>-->
+<!--                    <input placeholder="Email" type="email"/>-->
+<!--                </div>-->
+<!--                <div class="input-field">-->
+<!--                    <i class="fas fa-lock"></i>-->
+<!--                    <input placeholder="Password" type="password"/>-->
+<!--                </div>-->
+<!--                <div class="input-field">-->
+<!--                    <i class="fas fa-lock"></i>-->
+<!--                    <input placeholder="Confirm Password" type="password"/>-->
+<!--                </div>-->
+<!--                <input class="btn" type="submit" style="background-color: #ac85ff;" value="Confirm"/>-->
+<!--                <br>-->
+<!--                <br>-->
+                <a class="social-text" href="{{ url_for('home_page') }}" style="color: black; text-decoration: none;" onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='black'">Continue without any Account</a>
                 <div class="social-media">
                     <a class="social-icon" href="#">
                         <i class="fab fa-facebook-f"></i>
@@ -88,7 +104,7 @@
             <div class="content">
                 <h3>New here ?</h3>
                 <p>
-                    Please, Register for a better experience. Here you get all the short news based on differnt AI algorithum.
+                    Please, Register for a better experience. Here you get all the short news based on different AI algo.
                 </p>
                 <button class="btn transparent" id="sign-up-btn">
                     Register
