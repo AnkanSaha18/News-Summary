@@ -16,10 +16,13 @@ def home_page():
 
 @app.route('/news/<news_category>')
 def news_page(news_category):
-    # news_list = news.get_news(news_category=news_category)
-    news.get_news(news_category=news_category)
-    news_list = "list of the news"
-    return render_template('newspaper.html', news_category=news_category, news_list=news_list)
+    news_list = news.get_news_list(news_category=news_category)
+    print(news_list)
+
+    for news_object in news_list:
+        print(news_object.headline, "\n")
+
+    return render_template('newspaper.html', news_category=news_category, news_list=news_list, news_list_size=len(news_list))
 
 
 @app.route('/login-registration', methods=['GET', 'POST'])
@@ -53,7 +56,8 @@ def summarize_link():
             summarized_text = spacy_summary.spacy_summary(headline, input_text)
             summarized_text_reading_time = spacy_summary.calculate_reading_time(summarized_text)
             finishing_time = time.time()
-            flash("Congratulation! Summarization successfully completed within {:.2f} second".format(finishing_time-entering_time), category='success')
+            flash("Congratulation! Summarization successfully completed within {:.2f} second".format(
+                finishing_time - entering_time), category='success')
 
             return render_template("summarize_link.html",
                                    input_text_reading_time=input_text_reading_time,

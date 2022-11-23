@@ -16,39 +16,43 @@ Short News
     <p class="fw-bold p-4" style="color:white; font-size: 70px;">{{news_category}} News</p>
 </div>
 
-<div class="container p-4 mt-4 rounded" style="background: rgb(204, 204, 255);">
+
+
+{% for index in range(news_list_size) %}
+<div class="container p-4 mt-4 rounded" style="background: rgb(219, 220, 229);">
     <div class="row">
         <div class="col-4">
             <img class="rounded"
-                src="https://gumlet.assettype.com/bdnews24-english%2F2022-11%2Fbacb4103-82bf-4c33-91de-892495e154be%2Fkaoru_mitoma_231122_01.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=1100"
+                src="{{news_list[index].image_src}}"
                 alt="" style="height: 200px;">
         </div>
         <div class="col-8">
-            <button type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+            <button type="button" class="" data-bs-toggle="modal" data-bs-target="#id{{index}}"
                 style="background: transparent; border:0px;">
-                <h4 style="text-align: left;">Headline</h4>
+                <h4 style="text-align: left;">{{news_list[index].headline}}</h4>
             </button>
         </div>
     </div>
 </div>
-<div class="modal modal-dialog-scrollable" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal modal-dialog-scrollable" id="id{{index}}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Headline</h1>
+                <h1 class="modal-title fs-3" id="exampleModalLabel">{{news_list[index].headline}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Short News
+                {{news_list[index].summary}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary"><a href="https://www.youtube.com/" target="_blank" style="color: white; text-decoration: none;"> Read Original News </a></button>
+                <button type="button" class="btn btn-primary"><a href="{{news_list[index].link}}" target="_blank" style="color: white; text-decoration: none;"> Read Original News </a></button>
             </div>
         </div>
     </div>
 </div>
+{% endfor %}
 
 
 
