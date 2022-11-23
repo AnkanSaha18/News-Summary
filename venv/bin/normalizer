@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/Users/ankansaha/Desktop/Shared 3-2/2. LAB/CSE 3200(System Development Project)/Project/News-Summary/venv/bin/python" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from charset_normalizer.cli.normalizer import cli_detect
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(cli_detect())
