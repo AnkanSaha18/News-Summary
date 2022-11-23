@@ -4,6 +4,7 @@ from application.models import User
 from application.forms import RegisterForm
 from application import db
 from application import spacy_summary
+import time
 
 
 @app.route('/')
@@ -39,17 +40,23 @@ def login_registration_page():
 @app.route('/summarize_link', methods=['GET', 'POST'])
 def summarize_link():
     if request.method == 'POST':
+        entering_time = time.time()
         link = request.form['link']
-        print("The link: {}".format(link))
-        headline, input_text = spacy_summary.get_headline_text(link)
-        input_text_reading_time = spacy_summary.calculate_reading_time(input_text)
+        try:
+            headline, input_text = spacy_summary.get_headline_text(link)
+            input_text_reading_time = spacy_summary.calculate_reading_time(input_text)
 
-        summarized_text = spacy_summary.spacy_summary(headline, input_text_reading_time)
-        summarized_text_reading_time = spacy_summary.calculate_reading_time(summarized_text)
+            summarized_text = spacy_summary.spacy_summary(headline, input_text)
+            summarized_text_reading_time = spacy_summary.calculate_reading_time(summarized_text)
+            finishing_time = time.time()
+            flash("Congratulation! Summarization successfully completed within {:.2f} second".format(finishing_time-entering_time), category='success')
 
-        return render_template("summarize_link.html",
-                               input_text_reading_time=input_text_reading_time,
-                               summarized_text_reading_time=summarized_text_reading_time,
-                               input_text=input_text,
-                               summarized_text=summarized_text)
-    return render_template("summarize_link.html")
+            return render_template("summarize_link.html",
+                                   input_text_reading_time=input_text_reading_time,
+                                   summarized_text_reading_time=summarized_text_reading_time,
+                                   input_text=input_text,
+                                   summarized_text=summarized_text)
+        except Exception as e:
+            flash(e, category='danger')
+
+    return render_template("summarize_link.html", input_text_reading_time=0, summarized_text_reading_time=0)

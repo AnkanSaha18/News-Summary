@@ -13,14 +13,17 @@ def calculate_reading_time(text):
     tokens = [token.text for token in doc]
     total_words = len(tokens)
     reading_time = total_words / 110.0
-    return reading_time
+    return "{:.2f}".format(reading_time)
 
 
 def get_headline_text(url):
     html = requests.get(url)
-    bsobj = soup(html.content, 'lxml')
+    bsobj = soup(html.text, 'html.parser')
     headline = bsobj.title.text
     text = ' '.join(map(lambda p: p.text, bsobj.findAll('p')))
+
+    if(len(text) == 0 or len(headline) == 0):
+        raise Exception('No Text is found in the provided URL')
     return headline, text
 
 
@@ -72,7 +75,7 @@ def spacy_summary(headline, text):
     # sentence_scores_list
     sentence_scores_list.sort(reverse=True)
     sentence_scores_list
-    desired_summarized_text_persentage = 0.30
+    desired_summarized_text_persentage = 0.20
     select_length = int(len(sentence_tokens) * desired_summarized_text_persentage)
     del sentence_scores_list[select_length:]
     summary = []
