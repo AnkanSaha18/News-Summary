@@ -4,6 +4,7 @@ from application.models import User
 from application.forms import RegisterForm
 from application import db
 from application import spacy_summary
+from application import news
 import time
 
 
@@ -13,9 +14,12 @@ def home_page():
     return render_template('home.html')
 
 
-@app.route('/news/<news_type>')
-def news_page(news_type):
-    return f"Now we have to render {news_type} page"
+@app.route('/news/<news_category>')
+def news_page(news_category):
+    # news_list = news.get_news(news_category=news_category)
+    news.get_news(news_category=news_category)
+    news_list = "list of the news"
+    return render_template('newspaper.html', news_category=news_category, news_list=news_list)
 
 
 @app.route('/login-registration', methods=['GET', 'POST'])

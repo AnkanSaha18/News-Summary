@@ -35,10 +35,15 @@
                        News
                     </a>
                     <ul class="dropdown-menu" style="background-color: #c8cdff;">
-                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_type='national_news') }}">National News</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_type='international_news') }}">International News</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_type='science') }}">Science</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_type='entertainment') }}">Entertainment</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_category='Latest') }}">Latest News</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_category='International') }}">International News</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_category='Education') }}">Education</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_category='Economy') }}">Economy</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_category='Politics') }}">Politics</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_category='Sports') }}">Sports</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_category='Lifestyle') }}">Lifestyle</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_category='Science') }}">Science</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('news_page', news_category='Environment') }}">Environment</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
