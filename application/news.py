@@ -23,6 +23,7 @@ def get_news_list(news_category):
         url = 'https://bdnews24.com/collection/111531'
     elif news_category == "International":
         url = 'https://bdnews24.com/world'
+        url = 'https://en.prothomalo.com/collection/international'
     elif news_category == "Education":
         url = 'https://bdnews24.com/education'
     elif news_category == "Economy":

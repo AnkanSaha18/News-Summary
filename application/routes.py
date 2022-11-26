@@ -43,6 +43,30 @@ def login_registration_page():
 
     return render_template('login_registration.html', form=register_form)
 
+@app.route('/summarize_text', methods=['GET', 'POST'])
+def summarize_text():
+    if request.method == 'POST':
+        entering_time = time.time()
+        headline = request.form['headline']
+        input_text = request.form['input_text']
+        try:
+            input_text_reading_time = spacy_summary.calculate_reading_time(input_text)
+
+            summarized_text = spacy_summary.spacy_summary(headline, input_text)
+            summarized_text_reading_time = spacy_summary.calculate_reading_time(summarized_text)
+            finishing_time = time.time()
+            flash("Congratulation! Summarization successfully completed within {:.2f} second".format(
+                finishing_time - entering_time), category='success')
+
+            return render_template("summarize_text.html",
+                                   input_text_reading_time=input_text_reading_time,
+                                   summarized_text_reading_time=summarized_text_reading_time,
+                                   input_text=input_text,
+                                   summarized_text=summarized_text)
+        except Exception as e:
+            flash(e, category='danger')
+    return render_template('summarize_text.html')
+
 
 @app.route('/summarize_link', methods=['GET', 'POST'])
 def summarize_link():
@@ -68,3 +92,35 @@ def summarize_link():
             flash(e, category='danger')
 
     return render_template("summarize_link.html", input_text_reading_time=0, summarized_text_reading_time=0)
+
+
+@app.route('/summarize_file', methods=['GET', 'POST'])
+def summarize_file():
+    if request.method == 'POST':
+        entering_time = time.time()
+        input_file = request.files['file']
+        try:
+            input_text = input_file.read().decode('utf-8')
+            headline = ""
+            input_text_reading_time = spacy_summary.calculate_reading_time(input_text)
+
+            summarized_text = spacy_summary.spacy_summary(headline, input_text)
+            summarized_text_reading_time = spacy_summary.calculate_reading_time(summarized_text)
+            finishing_time = time.time()
+            flash("Congratulation! Summarization successfully completed within {:.2f} second".format(
+                finishing_time - entering_time), category='success')
+
+            return render_template("summarize_file.html",
+                                   input_text_reading_time=input_text_reading_time,
+                                   summarized_text_reading_time=summarized_text_reading_time,
+                                   input_text=input_text,
+                                   summarized_text=summarized_text)
+        except Exception as e:
+            flash("Please upload a .txt file", category='danger')
+
+    return render_template("summarize_file.html")
+
+
+@app.route("/summarize_compare_algorithm")
+def summarize_compare_algorithm():
+    return render_template("summarize_compare_algorithm.html")

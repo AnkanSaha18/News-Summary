@@ -68,16 +68,16 @@
                                 Summarize
                             </a>
                             <ul class="dropdown-menu" style="background-color: #c8cdff;">
-                                <li><a class="dropdown-item" href="#">Text</a></li>
+                                <li><a class="dropdown-item" href=" {{ url_for('summarize_text') }} ">Text</a></li>
                                 <li><a class="dropdown-item" href=" {{ url_for('summarize_link') }} ">Link</a></li>
-                                <li><a class="dropdown-item" href="#">Compare</a></li>
-                                <li><a class="dropdown-item" href="#">Upload File</a></li>
+                                <li><a class="dropdown-item" href=" {{ url_for('summarize_file') }} ">Upload File</a></li>
+                                <li><a class="dropdown-item" href=" {{ url_for('summarize_compare_algorithm') }} ">Compare</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active">
-                                About Us
+                            <a aria-current="page" class="nav-link active" href="#">
+                                About
                             </a>
                         </li>
                     </ul>
@@ -150,7 +150,7 @@
                 <hr>
                 <ul class="features">
                     <li><a href="#">Certifications</a></li>
-                    <li><a href="#">Privicy Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms and Conditions</a></li>
                     <li><a href="#">Customer Services</a></li>
                     <li><a href="#">Contact Us</a></li>
