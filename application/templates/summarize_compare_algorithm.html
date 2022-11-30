@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-    Compare Algorithm Page
+Compare Algorithm Page
 {% endblock %}
 
 
@@ -10,20 +10,24 @@
         <div class="mb-3 container">
             <div class="row">
                 <div class="col-sm mx-auto">
-                    <input type="text" name="headline" class="form-control" placeholder="Enter The Topic (recommended for better output)">
+                    <input type="text" name="headline" class="form-control"
+                        placeholder="Enter The Topic (recommended for better output)">
                     <br>
-                    <textarea name="input_text" class="form-control" rows="11" placeholder="Enter the Main Text" required></textarea>
+                    <textarea name="input_text" class="form-control" rows="11" placeholder="Enter the Main Text"
+                        required></textarea>
                     <br>
                     <div class="container justify-center">
                         <div class="row ">
                             <div class="col">
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button type="submit" class="btn" style="text-align: center; background: blue; color: white;">SUMMARY</button>
+                                    <button type="reset" class="btn"
+                                        style="text-align: center; background: blue; color: white;">CLEAR</button>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button type="reset" class="btn" style="text-align: center; background: rgb(255, 123, 0); color: white;">CLEAR</button>
+                                    <button type="submit" class="btn"
+                                        style="text-align: center; background: blue; color: white;">SUMMARY</button>
                                 </div>
                             </div>
                         </div>
@@ -36,50 +40,97 @@
 
 
 <div class="container mt-5">
-    <div class="col-md p-3" style="border-radius: 50px; border: 3px blue dotted; background: rgb(214, 222, 255);">
+    <div class="col-md p-3" style="border-radius: 10px; border: 3px rgb(114, 114, 251) dashed; background: rgb(214, 222, 255);">
         <h1 style="text-align: center;" class="mt-1 mb-3">Input Text</h1>
-        <h4>Reading Time: {{input_text_reading_time}} min</h4>
-        <p>{{ input_text }}</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, neque rerum quo numquam a laudantium officia tenetur iure dolor eius corrupti eos optio nemo debitis enim accusamus nam, praesentium maiores velit saepe ipsam distinctio quos? Repudiandae quidem odit porro iste nobis. Laboriosam a eveniet deserunt omnis eos, voluptas id perspiciatis optio quidem, quis, vel perferendis! Non perspiciatis voluptatum sequi officiis adipisci nulla id error tempora, a nemo fuga vitae, accusamus inventore? Voluptate est, error voluptatum, rerum optio qui maxime modi cum ipsa unde nisi! Quia sit at quaerat nobis unde nostrum, totam labore corporis temporibus fuga, velit nulla quasi aliquam aliquid nesciunt enim, corrupti qui? Harum commodi at nam iusto assumenda laborum facere omnis asperiores saepe libero nulla modi maiores corporis alias praesentium a quibusdam labore excepturi recusandae, magnam perferendis, quaerat est debitis quae? Porro maiores mollitia nihil aliquam nulla rerum corrupti, quidem sunt impedit tempore delectus sint quaerat dicta debitis velit aut quis sapiente quasi maxime, praesentium eius officiis deleniti et? Temporibus ipsa, quis unde autem tempore deleniti architecto debitis soluta vero suscipit, eligendi atque omnis harum illo. Quos consequatur expedita molestiae reprehenderit ad animi veniam. Rem, cum facere dolor neque sed itaque eos animi provident iste quae magnam dignissimos doloremque! Vero facere autem, iure fugiat eius natus neque laboriosam saepe nam earum quas iusto cumque, aspernatur deserunt asperiores, aperiam blanditiis officia totam odio. Illo, placeat consequuntur dolores commodi mollitia doloribus minus voluptatum nostrum magni. Quis aspernatur laboriosam excepturi dicta molestiae nisi quos laudantium corrupti enim, commodi harum consectetur dolore, tempore iste qui dolor quisquam assumenda fugiat esse rerum! Alias at minima dignissimos. Perspiciatis et nihil doloremque repellat tempora similique in mollitia, natus beatae tenetur veritatis expedita cum aspernatur tempore provident animi rerum aperiam ipsam voluptate ipsum distinctio velit facilis enim! Soluta quidem blanditiis ullam quam consequuntur enim amet.</p>
+        <h4>Reading Time: {{ parameter_dictionary["input_text_reading_time"] }} min</h4>
+        <h5>{{ parameter_dictionary["input_text"] }}</h5>
     </div>
 </div>
 
 <div class="container mt-5">
     <ul class="nav nav-tabs nav-justified">
         <li class="nav-item">
-            <a href="#tab1contain" class="nav-link" data-toggle="tab">tab1</a>
+            <a href="#tab1contain" class="nav-link fs-4 text-dark" data-toggle="tab">Spacy</a>
         </li>
         <li class="nav-item">
-            <a href="#tab2contain" class="nav-link" data-toggle="tab">tab2</a>
+            <a href="#tab2contain" class="nav-link fs-4 text-dark" data-toggle="tab">NLTK</a>
         </li>
         <li class="nav-item">
-            <a href="#tab3contain" class="nav-link" data-toggle="tab">tab3</a>
+            <a href="#tab3contain" class="nav-link fs-4 text-dark" data-toggle="tab">Sumy</a>
         </li>
         <li class="nav-item">
-            <a href="#tab4contain" class="nav-link" data-toggle="tab">tab4</a>
+            <a href="#tab4contain" class="nav-link fs-4 text-dark" data-toggle="tab">SBERT</a>
         </li>
     </ul>
 
     <div class="tab-content container">
         <div class="tab-pane" id="tab1contain">
             <br>
-            <h1>this is headline 1</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima itaque ratione qui incidunt beatae dolorum dolor unde, eius nulla nobis, tempore ab? Molestiae voluptate velit aperiam neque provident nostrum nobis nam quidem iusto sint ratione laborum, magni excepturi quos, officia explicabo. Laborum adipisci cupiditate odit aliquam quisquam error, perferendis veritatis odio quod quia, eius obcaecati aliquid corporis commodi exercitationem iure eos quae optio esse non, in excepturi dicta? Enim obcaecati animi est recusandae architecto ipsam, reiciendis maiores expedita nobis porro doloremque vel odit voluptatum qui molestias eos! Aut ab facere eius dicta inventore sequi voluptate, omnis nisi molestias reiciendis ipsam.</p>
+            <div>
+                <h1 style="text-align: center;" class="mt-1 mb-3">Spacy Summary</h1>
+            </div>
+            <div class="d-flex justify-content-between mb-3 mt-5">
+                <div class="row">
+                    <h4 class="text-primary"> Reading Time: {{ parameter_dictionary["spacy_summary_reading_time"] }} min</h4>
+                </div>
+                <div class="row">
+                    <h4 class="text-danger"> Execution Time: {{ parameter_dictionary["spacy_summary_execution_time"] }} min </h4>
+                </div>
+            </div>
+            <div class="p-3" style="background: rgb(239, 243, 255);">
+                <h5> {{ parameter_dictionary["spacy_summary_output"] }} </h5>
+            </div>
         </div>
         <div class="tab-pane" id="tab2contain">
             <br>
-            <h1>this is headline 2</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima itaque ratione qui incidunt beatae dolorum dolor unde, eius nulla nobis, tempore ab? Molestiae voluptate velit aperiam neque provident nostrum nobis nam quidem iusto sint ratione laborum, magni excepturi quos, officia explicabo. Laborum adipisci cupiditate odit aliquam quisquam error, perferendis veritatis odio quod quia, eius obcaecati aliquid corporis commodi exercitationem iure eos quae optio esse non, in excepturi dicta? Enim obcaecati animi est recusandae architecto ipsam, reiciendis maiores expedita nobis porro doloremque vel odit voluptatum qui molestias eos! Aut ab facere eius dicta inventore sequi voluptate, omnis nisi molestias reiciendis ipsam.</p>
+            <div>
+                <h1 style="text-align: center;" class="mt-1 mb-3">NLTK Summary</h1>
+            </div>
+            <div class="d-flex justify-content-between mb-3 mt-5">
+                <div class="row">
+                    <h4 class="text-primary"> Reading Time: {{ parameter_dictionary["nltk_summary_reading_time"] }} min</h4>
+                </div>
+                <div class="row">
+                    <h4 class="text-danger"> Execution Time: {{ parameter_dictionary["nltk_summary_execution_time"] }} min </h4>
+                </div>
+            </div>
+            <div class="p-3" style="background: rgb(239, 243, 255);">
+                <h5> {{ parameter_dictionary["nltk_summary_output"] }} </h5>
+            </div>
         </div>
         <div class="tab-pane" id="tab3contain">
             <br>
-            <h1>this is headline 3</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima itaque ratione qui incidunt beatae dolorum dolor unde, eius nulla nobis, tempore ab? Molestiae voluptate velit aperiam neque provident nostrum nobis nam quidem iusto sint ratione laborum, magni excepturi quos, officia explicabo. Laborum adipisci cupiditate odit aliquam quisquam error, perferendis veritatis odio quod quia, eius obcaecati aliquid corporis commodi exercitationem iure eos quae optio esse non, in excepturi dicta? Enim obcaecati animi est recusandae architecto ipsam, reiciendis maiores expedita nobis porro doloremque vel odit voluptatum qui molestias eos! Aut ab facere eius dicta inventore sequi voluptate, omnis nisi molestias reiciendis ipsam.</p>
+            <div>
+                <h1 style="text-align: center;" class="mt-1 mb-3">Sumy Summary</h1>
+            </div>
+            <div class="d-flex justify-content-between mb-3 mt-5">
+                <div class="row">
+                    <h4 class="text-primary"> Reading Time: {{ parameter_dictionary["sumy_summary_reading_time"] }} min</h4>
+                </div>
+                <div class="row">
+                    <h4 class="text-danger"> Execution Time: {{ parameter_dictionary["sumy_summary_execution_time"] }} min </h4>
+                </div>
+            </div>
+            <div class="p-3" style="background: rgb(239, 243, 255);">
+                <h5> {{ parameter_dictionary["sumy_summary_output"] }} </h5>
+            </div>
         </div>
         <div class="tab-pane" id="tab4contain">
             <br>
-            <h1>this is headline 4</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima itaque ratione qui incidunt beatae dolorum dolor unde, eius nulla nobis, tempore ab? Molestiae voluptate velit aperiam neque provident nostrum nobis nam quidem iusto sint ratione laborum, magni excepturi quos, officia explicabo. Laborum adipisci cupiditate odit aliquam quisquam error, perferendis veritatis odio quod quia, eius obcaecati aliquid corporis commodi exercitationem iure eos quae optio esse non, in excepturi dicta? Enim obcaecati animi est recusandae architecto ipsam, reiciendis maiores expedita nobis porro doloremque vel odit voluptatum qui molestias eos! Aut ab facere eius dicta inventore sequi voluptate, omnis nisi molestias reiciendis ipsam.</p>
+            <div>
+                <h1 style="text-align: center;" class="mt-1 mb-3">SBERT Summary</h1>
+            </div>
+            <div class="d-flex justify-content-between mb-3 mt-5">
+                <div class="row">
+                    <h4 class="text-primary"> Reading Time: {{ parameter_dictionary["sbert_summary_reading_time"] }} min</h4>
+                </div>
+                <div class="row">
+                    <h4 class="text-danger"> Execution Time: {{ parameter_dictionary["sbert_summary_execution_time"] }} min </h4>
+                </div>
+            </div>
+            <div class="p-3" style="background: rgb(239, 243, 255);">
+                <h5> {{ parameter_dictionary["sbert_summary_output"] }} </h5>
+            </div>
         </div>
     </div>
 </div>

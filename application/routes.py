@@ -4,6 +4,9 @@ from application.models import User
 from application.forms import RegisterForm
 from application import db
 from application import spacy_summary
+from application import nltk_summary
+from application import sumy_summary
+from application import sbert_summary
 from application import news
 import time
 
@@ -121,6 +124,69 @@ def summarize_file():
     return render_template("summarize_file.html")
 
 
-@app.route("/summarize_compare_algorithm")
+@app.route("/summarize_compare_algorithm", methods=["GET", "POST"])
 def summarize_compare_algorithm():
-    return render_template("summarize_compare_algorithm.html")
+    parameter_dictionary = {}
+    if request.method == 'POST':
+        headline = request.form['headline']
+        input_text = request.form['input_text']
+        input_text_reading_time = spacy_summary.calculate_reading_time(input_text)
+        parameter_dictionary["input_text"] = input_text
+        parameter_dictionary["input_text_reading_time"] = input_text_reading_time
+
+        entering_time = time.time()
+
+        # ================================ Spacy Summary =============================
+        spacy_summary_output = spacy_summary.spacy_summary(headline, input_text)
+        spacy_summary_reading_time = spacy_summary.calculate_reading_time(spacy_summary_output)
+        spacy_summary_finish_time = time.time()
+        spacy_summary_execution_time = spacy_summary_finish_time - entering_time
+
+        parameter_dictionary["spacy_summary_output"] = spacy_summary_output
+        parameter_dictionary["spacy_summary_reading_time"] = spacy_summary_reading_time
+        parameter_dictionary["spacy_summary_execution_time"] = "{:.4f}".format(spacy_summary_execution_time)
+
+        # ================================ NLTK Summary =============================
+        nltk_summary_output = nltk_summary.nltk_summary(headline, input_text)
+        nltk_summary_reading_time = spacy_summary.calculate_reading_time(nltk_summary_output)
+        nltk_summary_finish_time = time.time()
+        nltk_summary_execution_time = nltk_summary_finish_time - spacy_summary_finish_time
+
+        parameter_dictionary["nltk_summary_output"] = nltk_summary_output
+        parameter_dictionary["nltk_summary_reading_time"] = nltk_summary_reading_time
+        parameter_dictionary["nltk_summary_execution_time"] = "{:.4f}".format(nltk_summary_execution_time)
+
+        # ================================ Sumy Summary =============================
+        sumy_summary_output = sumy_summary.sumy_summary(input_text)
+        sumy_summary_reading_time = spacy_summary.calculate_reading_time(sumy_summary_output)
+        sumy_summary_finish_time = time.time()
+        sumy_summary_execution_time = sumy_summary_finish_time - nltk_summary_finish_time
+
+        parameter_dictionary["sumy_summary_output"] = sumy_summary_output
+        parameter_dictionary["sumy_summary_reading_time"] = sumy_summary_reading_time
+        parameter_dictionary["sumy_summary_execution_time"] = "{:.4f}".format(sumy_summary_execution_time)
+
+        # ================================ SBERT Summary =============================
+        sbert_summary_output = sbert_summary.sbert_summary(input_text)
+        sbert_summary_reading_time = spacy_summary.calculate_reading_time(sbert_summary_output)
+        sbert_summary_finish_time = time.time()
+        sbert_summary_execution_time = sbert_summary_finish_time - sumy_summary_finish_time
+
+        parameter_dictionary["sbert_summary_output"] = sbert_summary_output
+        parameter_dictionary["sbert_summary_reading_time"] = sbert_summary_reading_time
+        parameter_dictionary["sbert_summary_execution_time"] = "{:.4f}".format(sbert_summary_execution_time)
+
+        return render_template("summarize_compare_algorithm.html",
+                               input_text = input_text,
+                               input_text_reading_time = input_text_reading_time,
+                               spacy_summary_reading_time = spacy_summary_reading_time,
+                               spacy_summary_output = spacy_summary_output,
+                               nltk_summary_reading_time = nltk_summary_reading_time,
+                               nltk_summary_output = nltk_summary_output,
+                               sumy_summary_reading_time = sumy_summary_reading_time,
+                               sumy_summary_output = sumy_summary_output,
+                               sbert_summary_reading_time = sbert_summary_reading_time,
+                               sbert_summary_output = sbert_summary_output,
+                               parameter_dictionary=parameter_dictionary)
+
+    return render_template("summarize_compare_algorithm.html", parameter_dictionary=parameter_dictionary)
