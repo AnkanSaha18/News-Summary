@@ -21,12 +21,12 @@ Short News
 {% for index in range(news_list_size) %}
 <div class="container p-4 mt-4 rounded" style="background: rgb(219, 220, 229);">
     <div class="row">
-        <div class="col-4">
+        <div class="col-lg-4">
             <img class="rounded"
                 src="{{news_list[index].image_src}}"
                 alt="" style="height: 200px;">
         </div>
-        <div class="col-8">
+        <div class="col">
             <button type="button" class="" data-bs-toggle="modal" data-bs-target="#id{{index}}"
                 style="background: transparent; border:0px;">
                 <h4 style="text-align: left;">{{news_list[index].headline}}</h4>
@@ -34,8 +34,7 @@ Short News
         </div>
     </div>
 </div>
-<div class="modal modal-dialog-scrollable" id="id{{index}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal modal-dialog-scrollable" id="id{{index}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

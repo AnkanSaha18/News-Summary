@@ -11,21 +11,25 @@ from application import news
 import time
 
 
-@app.route('/')
-@app.route('/home')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/home', methods=['GET', 'POST'])
 def home_page():
+    # print(request.form['username'])
     return render_template('home.html')
 
 
 @app.route('/news/<news_category>')
 def news_page(news_category):
-    news_list = news.get_news_list(news_category=news_category)
-    print(news_list)
+    try:
+        news_list = news.get_news_list(news_category=news_category)
+        return render_template('newspaper.html', news_category=news_category, news_list=news_list, news_list_size=len(news_list))
+    except Exception as error_message:
+        flash("Failed to establish a new connection. You're offline. Check your connection.", category='danger')
+        return redirect(url_for('home_page'))
 
-    for news_object in news_list:
-        print(news_object.headline, "\n")
+    # for news_object in news_list:
+    #     print(news_object.headline, "\n")
 
-    return render_template('newspaper.html', news_category=news_category, news_list=news_list, news_list_size=len(news_list))
 
 
 @app.route('/login-registration', methods=['GET', 'POST'])
@@ -176,17 +180,6 @@ def summarize_compare_algorithm():
         parameter_dictionary["sbert_summary_reading_time"] = sbert_summary_reading_time
         parameter_dictionary["sbert_summary_execution_time"] = "{:.4f}".format(sbert_summary_execution_time)
 
-        return render_template("summarize_compare_algorithm.html",
-                               input_text = input_text,
-                               input_text_reading_time = input_text_reading_time,
-                               spacy_summary_reading_time = spacy_summary_reading_time,
-                               spacy_summary_output = spacy_summary_output,
-                               nltk_summary_reading_time = nltk_summary_reading_time,
-                               nltk_summary_output = nltk_summary_output,
-                               sumy_summary_reading_time = sumy_summary_reading_time,
-                               sumy_summary_output = sumy_summary_output,
-                               sbert_summary_reading_time = sbert_summary_reading_time,
-                               sbert_summary_output = sbert_summary_output,
-                               parameter_dictionary=parameter_dictionary)
+        return render_template("summarize_compare_algorithm.html", parameter_dictionary=parameter_dictionary)
 
     return render_template("summarize_compare_algorithm.html", parameter_dictionary=parameter_dictionary)

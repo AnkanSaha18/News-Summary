@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-lg sticky-top"
             style="background-image: linear-gradient(-90deg, #639cff, #accbff, #639cff);">
             <div class="container-fluid">
-                <a class="navbar-brand fs-3" href="#">Short World</a>
+                <a class="navbar-brand fs-3" href="{{ url_for('home_page') }}">Short World</a>
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     type="button">
@@ -80,7 +80,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a aria-current="page" class="nav-link active" href="#">
+                            <a aria-current="page" class="nav-link active" href="#about_us">
                                 About
                             </a>
                         </li>
@@ -161,7 +161,7 @@
                 </ul>
             </li>
         </ul>
-        <div class="footer-bottom">
+        <div class="footer-bottom" id="about_us">
             
             <p>
                 Authors:<br>

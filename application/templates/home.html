@@ -1,8 +1,29 @@
 {% extends 'base.html' %}
 {% block title %}
-    Home Page
+Home Page
 {% endblock %}
 
 
 {% block body %}
+
+<div data-controller="video-player">
+    <div tabindex="0" class="plyr plyr--full-ui plyr--video plyr--html5 plyr--fullscreen-enabled plyr--pip-supported simplified-controls plyr--paused">
+        <div>
+            <video autoplay="true" loop="true" playsinline="true" muted="true" data-video-player-target="player" class="plyr__video" width="100%">
+                <source src="https://static.vecteezy.com/system/resources/previews/002/018/798/mp4/corporate-world-network-background-free-video.mp4" type="video/mp4">
+                <source src="https://static.vecteezy.com/system/resources/previews/002/018/798/corporate-world-network-background-free-video.webm" type="video/webm">
+            </video>
+        </div>
+    </div>
+</div>
+
+<div style="border: 0px black solid; width: 400px; position: absolute; right:100px; top: 320px;">
+    <div style="text-align: center;">
+        <h3 style="font-size: 40px;">Welcome</h3>
+        <h3 style="color: rgb(21, 0, 255);">to</h3>
+        <h1 style="font-size: 80px;">Short <span style="color: rgb(255, 140, 0);">World</span></h1>
+    </div>
+</div>
+
+
 {% endblock %}
