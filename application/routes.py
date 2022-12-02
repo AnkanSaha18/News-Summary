@@ -1,5 +1,5 @@
 from application import app
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request, session
 from application.models import User
 from application.forms import RegisterForm
 from application import db
@@ -14,8 +14,19 @@ import time
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def home_page():
-    # print(request.form['username'])
-    return render_template('home.html')
+    if request.method == 'POST':
+        if request.form.get('login') is not None:
+            session['username'] = request.form['username']
+            print(session['username'])
+            flash("You have been logged in successfully", category='success')
+
+        if request.form.get('logout') is not None:
+            session.pop('username', None)
+            print('Session deleted')
+            flash("You have been logout successfully", category='danger')
+            # print(request.form.get['logout'])
+    return render_template('home.html', session=session)
+
 
 
 @app.route('/news/<news_category>')

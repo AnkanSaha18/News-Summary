@@ -14,17 +14,17 @@
 <div class="container">
     <div class="forms-container">
         <div class="signin-signup">
-            <form action="#" class="sign-in-form">
+            <form action="{{ url_for('home_page') }}" class="sign-in-form" method="post">
                 <h2 class="title">Login</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input placeholder="Username" type="text"/>
+                    <input placeholder="Username" type="text" name="username" required/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input placeholder="Password" type="password"/>
+                    <input placeholder="Password" type="password" name="password" required/>
                 </div>
-                <input class="btn solid" type="submit" value="Login"/>
+                <input name="login" class="btn solid" type="submit" value="Login"/>
                 <br>
                 <br>
                 <a class="text" href="{{ url_for('home_page') }}" style="color: black; text-decoration: none;" onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='black'">Continue without Login</a>
@@ -56,25 +56,7 @@
 
                 {{ form.submit(class="btn")}}
 
-<!--                <div class="input-field">-->
-<!--                    <i class="fas fa-user"></i>-->
-<!--                    <input placeholder="Username" type="text"/>-->
-<!--                </div>-->
-<!--                <div class="input-field">-->
-<!--                    <i class="fas fa-envelope"></i>-->
-<!--                    <input placeholder="Email" type="email"/>-->
-<!--                </div>-->
-<!--                <div class="input-field">-->
-<!--                    <i class="fas fa-lock"></i>-->
-<!--                    <input placeholder="Password" type="password"/>-->
-<!--                </div>-->
-<!--                <div class="input-field">-->
-<!--                    <i class="fas fa-lock"></i>-->
-<!--                    <input placeholder="Confirm Password" type="password"/>-->
-<!--                </div>-->
-<!--                <input class="btn" type="submit" style="background-color: #ac85ff;" value="Confirm"/>-->
-<!--                <br>-->
-<!--                <br>-->
+
                 <a class="social-text" href="{{ url_for('home_page') }}" style="color: black; text-decoration: none;" onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='black'">Continue without any Account</a>
                 <div class="social-media">
                     <a class="social-icon" href="#">

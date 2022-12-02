@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bc7cd418-3123-4550-8896-4e03158c7ea7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/nltk_summary.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/nltk_summary.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/sbert_summary.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/sbert_summary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/sumy_summary.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/sumy_summary.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/templates/base_templete.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/base_templete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/templates/login_registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/login_registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/templates/newspaper.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/newspaper.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

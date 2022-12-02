@@ -87,10 +87,20 @@
                     </ul>
 
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a aria-current="page" class="nav-link active"
-                                href="{{ url_for('login_registration_page') }}">Login/Registration</a>
-                        </li>
+                        {% if session['username']: %}
+                            <li class="nav-item">
+                                <h4>{{ session['username'] }}</h4>
+                            </li>
+                            <li class="nav-item">
+                                <form action="{{ url_for('home_page') }}" method="post">
+                                    <input type="submit" name="logout" class="btn btn-outline-warning btn-sm ms-3" value="Logout"/>
+                                </form>
+                            </li>
+                        {% else: %}
+                            <li class="nav-item">
+                                <a aria-current="page" class="nav-link active" href="{{ url_for('login_registration_page') }}">Login/Registration</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
