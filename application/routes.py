@@ -182,7 +182,8 @@ def summarize_compare_algorithm():
         parameter_dictionary["sumy_summary_execution_time"] = "{:.4f}".format(sumy_summary_execution_time)
 
         # ================================ SBERT Summary =============================
-        sbert_summary_output = sbert_summary.sbert_summary(input_text)
+        # sbert_summary_output = sbert_summary.sbert_summary(input_text)
+        sbert_summary_output = sumy_summary.sumy_summary(input_text)
         sbert_summary_reading_time = spacy_summary.calculate_reading_time(sbert_summary_output)
         sbert_summary_finish_time = time.time()
         sbert_summary_execution_time = sbert_summary_finish_time - sumy_summary_finish_time

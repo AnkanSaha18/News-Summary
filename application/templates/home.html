@@ -6,7 +6,7 @@ Home Page
 
 {% block body %}
 
-<div data-controller="video-player">
+<div data-controller="video-player" style="position: relative;">
     <div tabindex="0" class="plyr plyr--full-ui plyr--video plyr--html5 plyr--fullscreen-enabled plyr--pip-supported simplified-controls plyr--paused">
         <div>
             <video autoplay="true" loop="true" playsinline="true" muted="true" data-video-player-target="player" class="plyr__video" width="100%">
@@ -15,15 +15,16 @@ Home Page
             </video>
         </div>
     </div>
-</div>
-
-<div style="border: 0px black solid; width: 400px; position: absolute; right:100px; top: 320px;">
-    <div style="text-align: center;">
-        <h3 style="font-size: 40px;">Welcome</h3>
-        <h3 style="color: rgb(21, 0, 255);">to</h3>
-        <h1 style="font-size: 80px;">Short <span style="color: rgb(255, 140, 0);">World</span></h1>
+    <div style="width: 400px; position: absolute; right:10%; top: 27%;">
+        <div style="text-align: center;">
+            <h3 style="font-size: 40px;">Welcome</h3>
+            <h3 style="color: rgb(21, 0, 255);">to</h3>
+            <h1 style="font-size: 80px;">Short <span style="color: rgb(255, 140, 0);">World</span></h1>
+        </div>
     </div>
 </div>
+
+
 
 
 {% endblock %}
