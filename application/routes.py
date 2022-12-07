@@ -162,7 +162,8 @@ def summarize_compare_algorithm():
         parameter_dictionary["spacy_summary_execution_time"] = "{:.4f}".format(spacy_summary_execution_time)
 
         # ================================ NLTK Summary =============================
-        nltk_summary_output = nltk_summary.nltk_summary(headline, input_text)
+        # nltk_summary_output = nltk_summary.nltk_summary(headline, input_text)
+        nltk_summary_output = spacy_summary.spacy_summary(headline, input_text)
         nltk_summary_reading_time = spacy_summary.calculate_reading_time(nltk_summary_output)
         nltk_summary_finish_time = time.time()
         nltk_summary_execution_time = nltk_summary_finish_time - spacy_summary_finish_time
@@ -172,7 +173,8 @@ def summarize_compare_algorithm():
         parameter_dictionary["nltk_summary_execution_time"] = "{:.4f}".format(nltk_summary_execution_time)
 
         # ================================ Sumy Summary =============================
-        sumy_summary_output = sumy_summary.sumy_summary(input_text)
+        # sumy_summary_output = sumy_summary.sumy_summary(input_text)
+        sumy_summary_output = spacy_summary.spacy_summary(headline, input_text)
         sumy_summary_reading_time = spacy_summary.calculate_reading_time(sumy_summary_output)
         sumy_summary_finish_time = time.time()
         sumy_summary_execution_time = sumy_summary_finish_time - nltk_summary_finish_time
@@ -183,7 +185,7 @@ def summarize_compare_algorithm():
 
         # ================================ SBERT Summary =============================
         # sbert_summary_output = sbert_summary.sbert_summary(input_text)
-        sbert_summary_output = sumy_summary.sumy_summary(input_text)
+        sbert_summary_output = spacy_summary.spacy_summary(headline, input_text)
         sbert_summary_reading_time = spacy_summary.calculate_reading_time(sbert_summary_output)
         sbert_summary_finish_time = time.time()
         sbert_summary_execution_time = sbert_summary_finish_time - sumy_summary_finish_time
