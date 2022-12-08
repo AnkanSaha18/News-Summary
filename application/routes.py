@@ -162,8 +162,8 @@ def summarize_compare_algorithm():
         parameter_dictionary["spacy_summary_execution_time"] = "{:.4f}".format(spacy_summary_execution_time)
 
         # ================================ NLTK Summary =============================
-        # nltk_summary_output = nltk_summary.nltk_summary(headline, input_text)
-        nltk_summary_output = spacy_summary.spacy_summary(headline, input_text)
+        nltk_summary_output = nltk_summary.nltk_summary(headline, input_text)
+        # nltk_summary_output = spacy_summary.spacy_summary(headline, input_text)
         nltk_summary_reading_time = spacy_summary.calculate_reading_time(nltk_summary_output)
         nltk_summary_finish_time = time.time()
         nltk_summary_execution_time = nltk_summary_finish_time - spacy_summary_finish_time
