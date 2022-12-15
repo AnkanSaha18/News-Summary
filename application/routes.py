@@ -1,3 +1,4 @@
+import application
 from application import app
 from flask import render_template, redirect, url_for, flash, request, session
 from application.models import User
@@ -7,6 +8,7 @@ from application import spacy_summary
 from application import nltk_summary
 from application import sumy_summary
 from application import sbert_summary
+from application import abstractive_summary
 from application import news
 import time
 
@@ -196,3 +198,32 @@ def summarize_compare_algorithm():
         return render_template("summarize_compare_algorithm.html", parameter_dictionary=parameter_dictionary)
 
     return render_template("summarize_compare_algorithm.html", parameter_dictionary=parameter_dictionary)
+
+
+@app.route('/summarize_abstractive', methods=['GET', 'POST'])
+def summarize_abstractive():
+
+    if len(session) == 1:
+        flash("Please login to use this feature", category="danger")
+        return redirect(url_for('home_page'))
+
+    if request.method == 'POST':
+        entering_time = time.time()
+        headline = request.form['headline']
+        input_text = request.form['input_text']
+        try:
+            input_text_reading_time = spacy_summary.calculate_reading_time(input_text)
+            summarized_text = abstractive_summary.abstractive_summary(input_text)
+            summarized_text_reading_time = spacy_summary.calculate_reading_time(summarized_text)
+            finishing_time = time.time()
+            flash("Congratulation! Summarization successfully completed within {:.2f} second".format(
+                finishing_time - entering_time), category='success')
+
+            return render_template("summarize_abstractive.html",
+                                   input_text_reading_time=input_text_reading_time,
+                                   summarized_text_reading_time=summarized_text_reading_time,
+                                   input_text=input_text,
+                                   summarized_text=summarized_text)
+        except Exception as e:
+            flash(e, category='danger')
+    return render_template('summarize_abstractive.html')
