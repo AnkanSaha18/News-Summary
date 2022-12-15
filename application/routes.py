@@ -18,9 +18,17 @@ import time
 def home_page():
     if request.method == 'POST':
         if request.form.get('login') is not None:
-            session['username'] = request.form['username']
-            print(session['username'])
-            flash("You have been logged in successfully", category='success')
+            # we need to check username and password from here
+            input_username = request.form['username']
+            input_password = request.form['password']
+            print(input_username, input_password)
+            user = User.query.filter_by(username=input_username, password_hash=input_password).first()
+
+            if user is None:
+                flash("!!!Invalid username or password!!! Please Try again", category="danger")
+            else:
+                session['username'] = input_username
+                flash("You have been logged in successfully", category='success')
 
         if request.form.get('logout') is not None:
             session.pop('username', None)
