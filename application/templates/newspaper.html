@@ -7,6 +7,23 @@ Short News
     div {
         /* border: 1px solid black; */
     }
+
+    .hover_div{
+        background: rgb(219, 220, 229);
+    }
+    .hover_div:hover{
+        border: 2px solid rgb(52, 53, 56);
+        background: rgb(99, 102, 108);
+        font-size: larger;
+    }
+
+    .hover_headline{
+        text-align: left;
+    }
+    .hover_headline:hover{
+        color: white;
+        /* font-weight: bold; */
+    }
 </style>
 {% endblock %}
 
@@ -19,17 +36,17 @@ Short News
 
 
 {% for index in range(news_list_size) %}
-<div class="container p-4 mt-4 rounded" style="background: rgb(219, 220, 229);">
-    <div class="row">
+<div class="container p-4 mt-4 rounded hover_div">
+    <div class="row p-1">
         <div class="col-lg-4">
-            <img class="rounded"
+            <img class="rounded border border-dark border-2"
                 src="{{news_list[index].image_src}}"
                 alt="" style="height: 200px;">
         </div>
         <div class="col">
-            <button type="button" class="" data-bs-toggle="modal" data-bs-target="#id{{index}}"
+            <button type="button" data-bs-toggle="modal" data-bs-target="#id{{index}}"
                 style="background: transparent; border:0px;">
-                <h4 style="text-align: left;">{{news_list[index].headline}}</h4>
+                <h4  class="hover_headline">{{news_list[index].headline}}</h4>
             </button>
         </div>
     </div>
@@ -53,17 +70,7 @@ Short News
 </div>
 {% endfor %}
 
-
-
-
-
-
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-
-
-
-
 {% endblock %}
+
+
+
