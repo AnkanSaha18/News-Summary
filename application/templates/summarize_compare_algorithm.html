@@ -61,6 +61,9 @@ Compare Algorithm Page
         <li class="nav-item">
             <a href="#tab4contain" class="nav-link fs-4 text-dark" data-toggle="tab">SBERT</a>
         </li>
+        <li class="nav-item">
+            <a href="#tab5contain" class="nav-link fs-4 text-dark" data-toggle="tab">Rank</a>
+        </li>
     </ul>
 
     <div class="tab-content container">
@@ -130,6 +133,23 @@ Compare Algorithm Page
             </div>
             <div class="p-3" style="background: rgb(239, 243, 255);">
                 <h5> {{ parameter_dictionary["sbert_summary_output"] }} </h5>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab5contain">
+            <br>
+            <div>
+                <h1 style="text-align: center;" class="mt-1 mb-3">Rank Summary</h1>
+            </div>
+            <div class="d-flex justify-content-between mb-3 mt-5">
+                <div class="row">
+                    <h4 class="text-primary"> Reading Time: {{ parameter_dictionary["rank_summary_reading_time"] }} min</h4>
+                </div>
+                <div class="row">
+                    <h4 class="text-danger"> Execution Time: {{ parameter_dictionary["rank_summary_execution_time"] }} min </h4>
+                </div>
+            </div>
+            <div class="p-3" style="background: rgb(239, 243, 255);">
+                <h5> {{ parameter_dictionary["rank_summary_output"] }} </h5>
             </div>
         </div>
     </div>

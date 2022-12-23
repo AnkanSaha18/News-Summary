@@ -8,6 +8,7 @@ from application import spacy_summary
 from application import nltk_summary
 from application import sumy_summary
 from application import sbert_summary
+from application import rank_summary
 from application import abstractive_summary
 from application import news
 import time
@@ -193,8 +194,8 @@ def summarize_compare_algorithm():
         parameter_dictionary["sumy_summary_execution_time"] = "{:.4f}".format(sumy_summary_execution_time)
 
         # ================================ SBERT Summary =============================
-        # sbert_summary_output = sbert_summary.sbert_summary(input_text)
-        sbert_summary_output = spacy_summary.spacy_summary(headline, input_text)
+        sbert_summary_output = sbert_summary.sbert_summary(input_text)
+        # sbert_summary_output = spacy_summary.spacy_summary(headline, input_text)
         sbert_summary_reading_time = spacy_summary.calculate_reading_time(sbert_summary_output)
         sbert_summary_finish_time = time.time()
         sbert_summary_execution_time = sbert_summary_finish_time - sumy_summary_finish_time
@@ -202,6 +203,17 @@ def summarize_compare_algorithm():
         parameter_dictionary["sbert_summary_output"] = sbert_summary_output
         parameter_dictionary["sbert_summary_reading_time"] = sbert_summary_reading_time
         parameter_dictionary["sbert_summary_execution_time"] = "{:.4f}".format(sbert_summary_execution_time)
+
+        # ================================ Rank Summary =============================
+        rank_summary_output = rank_summary.rank_summary(input_text)
+        # rank_summary_output = spacy_summary.spacy_summary(headline, input_text)
+        rank_summary_reading_time = spacy_summary.calculate_reading_time(rank_summary_output)
+        rank_summary_finish_time = time.time()
+        rank_summary_execution_time = rank_summary_finish_time - sbert_summary_finish_time
+
+        parameter_dictionary["rank_summary_output"] = rank_summary_output
+        parameter_dictionary["rank_summary_reading_time"] = rank_summary_reading_time
+        parameter_dictionary["rank_summary_execution_time"] = "{:.4f}".format(rank_summary_execution_time)
 
         return render_template("summarize_compare_algorithm.html", parameter_dictionary=parameter_dictionary)
 
