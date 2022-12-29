@@ -56,7 +56,7 @@ def nltk_summary(headline, text):
     # sentence_scores_list
     sentence_scores_list.sort(reverse=True)
     sentence_scores_list
-    desired_summarized_text_persentage = 0.20
+    desired_summarized_text_persentage = 0.28
     select_length = int(len(sentence_tokens) * desired_summarized_text_persentage)
     del sentence_scores_list[select_length:]
     summary = []

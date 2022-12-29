@@ -22,16 +22,15 @@ def get_news_list(news_category):
     if news_category == "Latest":
         url = 'https://bdnews24.com/collection/111531'
     elif news_category == "International":
-        url = 'https://bdnews24.com/world'
-        url = 'https://en.prothomalo.com/collection/international'
+        url = 'https://bdnews24.com/neighbours'
     elif news_category == "Education":
         url = 'https://bdnews24.com/education'
     elif news_category == "Economy":
-        url = 'https://bdnews24.com/economy'
+        url = 'https://bdnews24.com/business'
     elif news_category == "Politics":
         url = 'https://bdnews24.com/politics'
     elif news_category == "Sports":
-        url = 'https://bdnews24.com/sport'
+        url = 'https://bdnews24.com/cricket'
     elif news_category == "Lifestyle":
         url = 'https://bdnews24.com/lifestyle'
     elif news_category == "Science":
