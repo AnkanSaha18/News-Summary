@@ -1,4 +1,3 @@
 # News-Summary
  
- The whole project is implemented on this site:
- https://news-summary.onrender.com/
+ The whole project is implemented <a href="https://news-summary.onrender.com/">here</a>
